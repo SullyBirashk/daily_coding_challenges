@@ -25,3 +25,8 @@ def test_negative_deposit():
      with pytest.raises(ValueError, match='Deposit amount must be a positive number'):
               account.deposit(-100)
 
+def test_non_numeric_deposit():
+     account = BankAccount('John Doe', 1000)
+     with pytest.raises(TypeError, match='Deposit amount must be numeric'):
+              account.deposit('five hundred')
+
