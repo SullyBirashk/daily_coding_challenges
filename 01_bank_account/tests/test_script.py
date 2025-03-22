@@ -14,3 +14,9 @@ def test_withdraw():
     account.withdraw(300)
     assert account.get_balance() == 700
 
+def test_withdraw_more_than_balance():
+    account = BankAccount('John Doe', 1200)
+    with pytest.raises(ValueError, match='Insufficient funds. Current balance: 1200'):
+            account.withdraw(1500)
+            assert account.get_balance() == 1200
+
