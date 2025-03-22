@@ -9,3 +9,8 @@ def test_deposit():
     account.deposit(500)
     assert account.get_balance() == 1500
 
+def test_withdraw():
+    account = BankAccount('John Doe', 1000)
+    account.withdraw(300)
+    assert account.get_balance() == 700
+
