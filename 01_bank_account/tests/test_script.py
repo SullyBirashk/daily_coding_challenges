@@ -20,3 +20,8 @@ def test_withdraw_more_than_balance():
             account.withdraw(1500)
             assert account.get_balance() == 1200
 
+def test_negative_deposit():
+     account = BankAccount('John Doe', 1000)
+     with pytest.raises(ValueError, match='Deposit amount must be a positive number'):
+              account.deposit(-100)
+
