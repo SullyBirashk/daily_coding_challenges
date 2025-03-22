@@ -35,3 +35,8 @@ def test_negative_withdraw():
       with pytest.raises(ValueError, match='Withdrawal amount must be a positive number'):
                 account.withdraw(-50)
 
+def test_non_numeric_withdraw():
+      account = BankAccount('John Doe', 1000)
+      with pytest.raises(TypeError, match='Withdrawal amount must be numeric'):
+                account.withdraw('two hundred')
+
