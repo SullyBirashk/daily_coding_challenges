@@ -40,3 +40,8 @@ def test_non_numeric_withdraw():
       with pytest.raises(TypeError, match='Withdrawal amount must be numeric'):
                 account.withdraw('two hundred')
 
+def test_zero_deposit():
+      account = BankAccount('John Doe', 1000)
+      account.deposit(0)
+      assert account.get_balance() == 1000
+
