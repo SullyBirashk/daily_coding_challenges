@@ -45,3 +45,8 @@ def test_zero_deposit():
       account.deposit(0)
       assert account.get_balance() == 1000
 
+def test_zero_withdrawal():
+      account = BankAccount('John Doe', 1000)
+      account.withdraw(0)
+      assert account.get_balance() == 1000
+
