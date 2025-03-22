@@ -1,6 +1,23 @@
-## Challenge of the day ## 
-# Create a Python class called `BankAccount`.
-# It should allow users to deposit, withdraw, and check their balance.
-# Ensure that withdrawals do not exceed the available balance.
+class BankAccount:
+    def __init__(self, owner, balance):
+        self.owner = owner
+        self.balance = balance
 
-#[{'input': "account = BankAccount('John Doe', 1000)\naccount.deposit(500)\naccount.withdraw(300)\naccount.get_balance()", 'output': '1200'}, {'input': 'account.withdraw(1500)', 'output': 'Insufficient funds. Current balance: 1200'}]
+    def get_balance(self):
+        return self.balance
+
+    def deposit(self, amount):
+        if not isinstance(amount, (int, float)):
+            raise TypeError("Deposit amount must be numeric")
+        if amount < 0:
+            raise ValueError("Deposit amount must be a positive number")
+        self.balance += amount
+
+    def withdraw(self, amount):
+        if not isinstance(amount, (int, float)):
+            raise TypeError("Withdrawal amount must be numeric")
+        if amount < 0:
+            raise ValueError("Withdrawal amount must be a positive number")
+        if amount > self.balance:
+            raise ValueError(f"Insufficient funds. Current balance: {self.balance}")
+        self.balance -= amount
